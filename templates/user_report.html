@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>User Reports</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/umyu.jpg" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    #table > div > .icon-box{
+       
+        width: 100% !important;
+    }
+  </style>
+
+</head>
+
+<body class="d-flex min-vh-100">
+
+    <main class="container justify-content-center d-flex">
+        
+        <div class="row bg-light container-fluid">
+            
+
+            <form method="post">
+              {% csrf_token %}
+
+              {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div style="color: rgb(108, 238, 108);">{{message}}</div>
+                {% elif message.tags == 'error' %}
+                <div style="color: red;">{{message}}</div>
+                {% endif %}
+              {% endfor %}
+                <div class="position-fixed">
+                    <h3 class="text-center h4 mb-4 ">Add New Report</h3>
+                    <div class="row mt-4 pt-4">
+                        <div class="col-12">
+                            <label for="title" class="form-label">Title</label>
+                            <div class="input-group has-validation">
+                              <input placeholder="Report Title" type="text" name="title" class="form-control" id="title" required>
+                            </div>
+                          </div>
+                    </div>
+                   
+                    <div class="row mt-2 ">
+                        <div class="col-12">
+                            <label for="body" class="form-label">Details</label>
+                            <textarea  style="resize: none;" name="report" id="body" cols="34" rows="5" class="form-control"></textarea>
+                          </div>
+                    </div>
+    
+                    <div class="row mt-2 ">
+                        <div class="col-12">
+                            <label for="reportDate" class="form-label">Date Of Report</label>
+                            <div class="input-group has-validation">
+                              <input  type="date" name="reportDate" class="form-control" id="reportDate" required>
+                            </div>
+                          </div>
+                    </div>
+    
+                    <button class="mt-4 btn btn-success col-12">Add New Report</button>
+                    <a href="/user-dashboard" class="mt-4 btn btn-warning col-4">Go Back</a>
+
+                </div>
+            </form>
+        </div>
+    </main>
+ 
+
+  <!-- Vendor JS  Files -->
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+ 
+
+
+  <script src="../static/assets/js/reports.js"></script>
+
+</body>
+
+</html>
